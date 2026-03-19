@@ -1,0 +1,115 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "HAVEN IDE",
+  "version": "2.0.0",
+  "identifier": "com.khawrizm.haven-ide",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "title": "HAVEN IDE — بيئة التطوير السيادية",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 1024,
+        "minHeight": 700,
+        "resizable": true,
+        "decorations": false,
+        "transparent": false,
+        "center": true,
+        "visible": true,
+        "focus": true,
+        "titleBarStyle": "Transparent",
+        "hiddenTitle": true,
+        "theme": "Dark",
+        "backgroundColor": "#0a0a0a"
+      }
+    ],
+    "trayIcon": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true,
+      "menuOnLeftClick": false
+    },
+    "security": {
+      "csp": null,
+      "assetProtocol": {
+        "enable": true,
+        "scope": ["**"]
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [],
+    "externalBin": [],
+    "copyright": "© 2026 Sulaiman Alshammari — Ghala Rafaa Al-Omari Co.",
+    "category": "DeveloperTool",
+    "shortDescription": "Sovereign Arabic-First AI IDE",
+    "longDescription": "HAVEN IDE is a sovereign, privacy-first development environment with Arabic-first NLP, local AI via Ollama, and zero telemetry. Built by أبو خوارزم for the Arabic developer community.",
+    "linux": {
+      "deb": {
+        "depends": []
+      },
+      "rpm": {
+        "depends": []
+      },
+      "appimage": {
+        "bundleMediaFramework": true,
+        "files": {}
+      },
+      "desktop": {
+        "Categories": "Development;IDE;",
+        "Custom": {}
+      }
+    },
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "10.15",
+      "signingIdentity": null,
+      "hardenedRuntime": true
+    },
+    "windows": {
+      "digestAlgorithm": "sha256",
+      "certificateThumbprint": null,
+      "timestampUrl": "",
+      "tsp": false,
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      },
+      "allowDowngrades": false,
+      "nsis": {
+        "displayLanguageSelector": false
+      }
+    }
+  },
+  "plugins": {
+    "fs": {
+      "requireLiteralLeadingDot": false,
+      "scope": {
+        "allow": ["**"],
+        "deny": [
+          "$HOME/.ssh/**",
+          "$HOME/.gnupg/**",
+          "/etc/shadow",
+          "/etc/passwd"
+        ]
+      }
+    },
+    "shell": {
+      "open": "https?://.+"
+    }
+  }
+}

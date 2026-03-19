@@ -1,0 +1,676 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   HAVEN IDE — Global Styles
+   Sovereign Dark Theme: Black #0a0a0a | Gold #d4af37 | Green #00ff41
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@import "tailwindcss";
+
+/* ── CSS Custom Properties ─────────────────────────────────────────── */
+:root {
+  /* Haven Color System */
+  --haven-void:          #050505;
+  --haven-base:          #0a0a0a;
+  --haven-surface:       #111111;
+  --haven-elevated:      #1a1a1a;
+  --haven-border:        #222222;
+  --haven-muted:         #2a2a2a;
+
+  /* Sovereign Gold */
+  --haven-gold:          #d4af37;
+  --haven-gold-dim:      #a08828;
+  --haven-gold-bright:   #f0cc55;
+  --haven-gold-glow:     rgba(212, 175, 55, 0.15);
+
+  /* Terminal Green */
+  --haven-green:         #00ff41;
+  --haven-green-dim:     #00cc33;
+  --haven-green-bright:  #33ff66;
+  --haven-green-glow:    rgba(0, 255, 65, 0.15);
+
+  /* Text Hierarchy */
+  --haven-text-1:        #f0f0f0;
+  --haven-text-2:        #a0a0a0;
+  --haven-text-3:        #606060;
+  --haven-text-4:        #404040;
+
+  /* Status Colors */
+  --haven-error:         #ff4444;
+  --haven-warning:       #ffaa00;
+  --haven-info:          #4488ff;
+  --haven-success:       #00ff41;
+
+  /* Spacing */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 32px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Typography */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-arabic: 'Cairo', 'Tajawal', 'Noto Sans Arabic', sans-serif;
+
+  /* Layout */
+  --titlebar-height: 36px;
+  --sidebar-width: 280px;
+  --statusbar-height: 28px;
+  --tab-height: 36px;
+}
+
+/* ── Reset & Base ───────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--haven-base);
+  color: var(--haven-text-1);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arabic text gets Cairo font */
+[lang="ar"], .font-arabic, [dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+/* Code always gets mono */
+code, pre, .font-mono, .monaco-editor {
+  font-family: var(--font-mono) !important;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--haven-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--haven-muted);
+  border-radius: 3px;
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--haven-text-4);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--haven-surface);
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+
+::selection {
+  background: var(--haven-gold-glow);
+  color: var(--haven-gold-bright);
+}
+
+/* ── Focus Outline ──────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 1px solid var(--haven-gold);
+  outline-offset: 2px;
+}
+
+/* ── Haven Layout Classes ───────────────────────────────────────────── */
+
+.haven-titlebar {
+  height: var(--titlebar-height);
+  background: var(--haven-void);
+  border-bottom: 1px solid var(--haven-border);
+  display: flex;
+  align-items: center;
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.haven-titlebar-buttons {
+  -webkit-app-region: no-drag;
+}
+
+.haven-sidebar {
+  background: var(--haven-surface);
+  border-right: 1px solid var(--haven-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.haven-editor {
+  background: var(--haven-base);
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.haven-ai-panel {
+  background: var(--haven-surface);
+  border-left: 1px solid var(--haven-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.haven-terminal {
+  background: var(--haven-void);
+  border-top: 1px solid var(--haven-border);
+}
+
+.haven-statusbar {
+  height: var(--statusbar-height);
+  background: var(--haven-void);
+  border-top: 1px solid var(--haven-border);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gap-sm);
+  gap: var(--gap-md);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--haven-text-3);
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--haven-text-3);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-icon:hover {
+  background: var(--haven-muted);
+  color: var(--haven-text-1);
+}
+
+.btn-icon.active {
+  color: var(--haven-gold);
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--haven-gold);
+  background: transparent;
+  color: var(--haven-gold);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--haven-gold-glow);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--haven-text-2);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-ghost:hover {
+  background: var(--haven-muted);
+  color: var(--haven-text-1);
+}
+
+/* ── Tab Bar ────────────────────────────────────────────────────────── */
+
+.haven-tabs {
+  display: flex;
+  align-items: center;
+  height: var(--tab-height);
+  background: var(--haven-surface);
+  border-bottom: 1px solid var(--haven-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0;
+}
+
+.haven-tabs::-webkit-scrollbar { display: none; }
+
+.haven-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+  padding: 0 14px;
+  height: 100%;
+  font-size: 12px;
+  color: var(--haven-text-3);
+  cursor: pointer;
+  border-right: 1px solid var(--haven-border);
+  white-space: nowrap;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  position: relative;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.haven-tab:hover {
+  color: var(--haven-text-1);
+  background: var(--haven-muted);
+}
+
+.haven-tab.active {
+  color: var(--haven-text-1);
+  background: var(--haven-base);
+}
+
+.haven-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--haven-gold);
+}
+
+.haven-tab-close {
+  margin-left: auto;
+  opacity: 0;
+  border-radius: 2px;
+  padding: 1px;
+  color: var(--haven-text-3);
+  transition: opacity var(--transition-fast), background var(--transition-fast);
+}
+
+.haven-tab:hover .haven-tab-close,
+.haven-tab.active .haven-tab-close {
+  opacity: 1;
+}
+
+.haven-tab-close:hover {
+  background: var(--haven-border);
+  color: var(--haven-text-1);
+}
+
+/* ── Gold Glow Effects ──────────────────────────────────────────────── */
+
+.glow-gold {
+  text-shadow: 0 0 8px var(--haven-gold), 0 0 16px var(--haven-gold-dim);
+}
+
+.glow-green {
+  text-shadow: 0 0 8px var(--haven-green), 0 0 16px var(--haven-green-dim);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.border-gold {
+  border-color: var(--haven-gold) !important;
+}
+
+.bg-gold-glow {
+  background: var(--haven-gold-glow);
+}
+
+/* ── Lobe Indicators ────────────────────────────────────────────────── */
+
+.lobe-cognitive  { color: #4488ff; }
+.lobe-executive  { color: var(--haven-gold); }
+.lobe-sensory    { color: var(--haven-green); }
+
+.lobe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.lobe-badge.cognitive {
+  background: rgba(68, 136, 255, 0.1);
+  color: #4488ff;
+  border: 1px solid rgba(68, 136, 255, 0.3);
+}
+
+.lobe-badge.executive {
+  background: var(--haven-gold-glow);
+  color: var(--haven-gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.lobe-badge.sensory {
+  background: var(--haven-green-glow);
+  color: var(--haven-green);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+/* ── Code Blocks ─────────────────────────────────────────────────────── */
+
+.haven-code-block {
+  background: var(--haven-void);
+  border: 1px solid var(--haven-border);
+  border-radius: var(--radius-md);
+  padding: var(--gap-md);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  position: relative;
+}
+
+.haven-code-block .copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.haven-code-block:hover .copy-btn {
+  opacity: 1;
+}
+
+/* ── Input Fields ─────────────────────────────────────────────────────── */
+
+.haven-input {
+  background: var(--haven-void);
+  border: 1px solid var(--haven-border);
+  border-radius: var(--radius-md);
+  color: var(--haven-text-1);
+  font-size: 13px;
+  padding: 8px 12px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  width: 100%;
+}
+
+.haven-input:focus {
+  border-color: var(--haven-gold);
+  box-shadow: 0 0 0 2px var(--haven-gold-glow);
+}
+
+.haven-input::placeholder {
+  color: var(--haven-text-4);
+}
+
+/* ── Chat Messages ──────────────────────────────────────────────────── */
+
+.chat-message-user {
+  background: var(--haven-elevated);
+  border: 1px solid var(--haven-border);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-md);
+  margin-left: auto;
+  max-width: 80%;
+}
+
+.chat-message-assistant {
+  background: var(--haven-surface);
+  border: 1px solid var(--haven-border);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-md);
+  max-width: 100%;
+}
+
+/* ── Sidebar Icons ──────────────────────────────────────────────────── */
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  color: var(--haven-text-4);
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.sidebar-icon:hover {
+  color: var(--haven-text-1);
+}
+
+.sidebar-icon.active {
+  color: var(--haven-gold);
+}
+
+.sidebar-icon.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 28px;
+  background: var(--haven-gold);
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── File Tree ──────────────────────────────────────────────────────── */
+
+.file-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: var(--haven-text-2);
+}
+
+.file-tree-item:hover {
+  background: var(--haven-muted);
+  color: var(--haven-text-1);
+}
+
+.file-tree-item.active {
+  background: var(--haven-elevated);
+  color: var(--haven-text-1);
+}
+
+.file-tree-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--haven-gold);
+}
+
+/* ── Sovereignty Indicator ──────────────────────────────────────────── */
+
+.sovereignty-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--haven-green);
+  box-shadow: 0 0 6px var(--haven-green);
+  animation: sovereignPulse 2s ease-in-out infinite;
+}
+
+@keyframes sovereignPulse {
+  0%, 100% { box-shadow: 0 0 4px var(--haven-green); }
+  50% { box-shadow: 0 0 12px var(--haven-green), 0 0 24px var(--haven-green-dim); }
+}
+
+/* ── Loading / Streaming ────────────────────────────────────────────── */
+
+.streaming-cursor::after {
+  content: '▋';
+  color: var(--haven-gold);
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.thinking-dots::after {
+  content: '...';
+  animation: thinkingDots 1.5s infinite;
+}
+
+@keyframes thinkingDots {
+  0%   { content: '.'; }
+  33%  { content: '..'; }
+  66%  { content: '...'; }
+  100% { content: '.'; }
+}
+
+/* ── Grid Background ────────────────────────────────────────────────── */
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Utility ────────────────────────────────────────────────────────── */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monospace {
+  font-family: var(--font-mono);
+}
+
+.text-gold { color: var(--haven-gold); }
+.text-green { color: var(--haven-green); }
+.text-muted { color: var(--haven-text-3); }
+.text-error { color: var(--haven-error); }
+.text-warning { color: var(--haven-warning); }
+
+/* ── Animations ─────────────────────────────────────────────────────── */
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.25s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(16px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ── Monaco Editor Override ─────────────────────────────────────────── */
+
+.monaco-editor {
+  background: var(--haven-base) !important;
+}
+
+.monaco-editor .margin {
+  background: var(--haven-base) !important;
+}
+
+.decorationsOverviewRuler {
+  display: none !important;
+}
+
+/* ── Xterm Override ─────────────────────────────────────────────────── */
+
+.xterm {
+  padding: 8px;
+}
+
+.xterm-viewport {
+  scrollbar-width: thin;
+  scrollbar-color: var(--haven-muted) transparent;
+}
+
+/* ── Resizable Panels ────────────────────────────────────────────────── */
+
+[data-panel-resize-handle-id] {
+  background: var(--haven-border);
+  transition: background var(--transition-fast);
+}
+
+[data-panel-resize-handle-id]:hover,
+[data-panel-resize-handle-id][data-resize-handle-active] {
+  background: var(--haven-gold-dim);
+}
+
+/* ── RTL Support ────────────────────────────────────────────────────── */
+
+[dir="rtl"] .chat-message-user {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .sidebar-icon.active::before {
+  left: auto;
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
