@@ -69,10 +69,6 @@
       "appimage": {
         "bundleMediaFramework": true,
         "files": {}
-      },
-      "desktop": {
-        "Categories": "Development;IDE;",
-        "Custom": {}
       }
     },
     "macOS": {
