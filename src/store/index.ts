@@ -37,7 +37,7 @@ export interface FileNode {
 
 // ── Layout State ──────────────────────────────────────────────────────
 
-export type SidebarTab = 'explorer' | 'search' | 'git' | 'settings';
+export type SidebarTab = 'explorer' | 'search' | 'git' | 'settings' | 'extensions';
 export type PanelPosition = 'right' | 'bottom';
 
 export interface LayoutState {

@@ -538,6 +538,10 @@ export class NiyahEngine {
     return this.memory.sessions.slice(-limit).reverse();
   }
 
+  getRootCount(): number {
+    return Object.keys(ARABIC_ROOTS).length;
+  }
+
   getCacheStats(): { size: number; capacity: number } {
     return { size: this.cache.size(), capacity: 512 };
   }

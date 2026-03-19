@@ -178,12 +178,12 @@ export default function TopBar() {
         paddingLeft: 8,
         paddingRight: 8,
         gap: 0,
-        WebkitAppRegion: 'drag' as React.CSSProperties['WebkitAppRegion'],
+        WebkitAppRegion: 'drag',
         userSelect: 'none',
       } as React.CSSProperties}
     >
       {/* Window Controls (left) */}
-      <div style={{ WebkitAppRegion: 'no-drag' as React.CSSProperties['WebkitAppRegion'] } as React.CSSProperties}>
+      <div style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}>
         <WindowControls />
       </div>
 
@@ -229,7 +229,7 @@ export default function TopBar() {
           display: 'flex',
           alignItems: 'center',
           gap: 2,
-          WebkitAppRegion: 'no-drag' as React.CSSProperties['WebkitAppRegion'],
+          WebkitAppRegion: 'no-drag',
         } as React.CSSProperties}
       >
         <ToolbarBtn

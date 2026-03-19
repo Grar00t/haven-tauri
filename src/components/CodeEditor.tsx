@@ -201,7 +201,7 @@ export default function CodeEditor() {
     // Configure TypeScript/JavaScript defaults
     monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
       target: monaco.languages.typescript.ScriptTarget.ESNext,
-      moduleResolution: monaco.languages.typescript.ModuleResolutionKind.Bundler,
+      moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
       module: monaco.languages.typescript.ModuleKind.ESNext,
       jsx: monaco.languages.typescript.JsxEmit.ReactJSX,
       esModuleInterop: true,

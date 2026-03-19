@@ -38,7 +38,6 @@ export default function NotificationStack() {
             key={n.id}
             className="animate-slide-up"
             style={{
-              background: 'var(--haven-surface)',
               border: `1px solid ${color}44`,
               borderLeft: `3px solid ${color}`,
               borderRadius: 6,

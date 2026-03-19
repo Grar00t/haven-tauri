@@ -141,7 +141,7 @@ export class ThreeLobeAgent {
     result.totalLatencyMs = Date.now() - startTime;
 
     // Step 6: Store assistant turn
-    this.addTurn('assistant', result.synthesis, decision.primary, result.primary.model, result.primary.stats ?? undefined);
+    this.addTurn('assistant', result.synthesis, decision.primary, result.primary.model, undefined);
 
     // Step 7: Record routing trace
     modelRouter.addToHistory({

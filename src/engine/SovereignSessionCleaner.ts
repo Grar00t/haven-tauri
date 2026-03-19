@@ -116,9 +116,9 @@ export class SovereignSessionCleaner {
     const encoded = encoder.encode(plaintext);
 
     const cipherBuffer = await crypto.subtle.encrypt(
-      { name: 'AES-GCM', iv },
+      { name: 'AES-GCM', iv: iv as BufferSource },
       this.cryptoKey,
-      encoded
+      encoded as BufferSource
     );
 
     // AES-GCM appends 16-byte auth tag at end
@@ -152,9 +152,9 @@ export class SovereignSessionCleaner {
     combined.set(tag, ciphertext.length);
 
     const decrypted = await crypto.subtle.decrypt(
-      { name: 'AES-GCM', iv },
+      { name: 'AES-GCM', iv: iv as BufferSource },
       this.cryptoKey,
-      combined
+      combined as BufferSource
     );
 
     return JSON.parse(new TextDecoder().decode(decrypted));
