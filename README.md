@@ -1,308 +1,329 @@
-# HAVEN IDE — بيئة التطوير السيادية
 
-> **الإنسان أولاً** | Zero Telemetry | 100% Local AI | No Microsoft
-
-HAVEN IDE is a sovereign, Arabic-first development environment built on Tauri v2 + React 19 + TypeScript. Every line of code runs on your machine — no cloud, no tracking, no compromises.
-
----
-
-## نظرة عامة / Overview
-
-| | |
-|---|---|
-| **المؤلف / Author** | Sulaiman Alshammari (أبو خوارزم) |
-| **الشركة / Company** | Ghala Rafaa Al-Omari Co. (CR: 7050426415) |
-| **الموقع / Website** | [khawrizm.com](https://khawrizm.com) |
-| **تويتر / Twitter** | [@khawrzm](https://twitter.com/khawrzm) |
-| **الإصدار / Version** | 2.0.0 |
-| **الرخصة / License** | MIT |
-
----
-
-## 🏗 Architecture — Three-Lobe Intelligence
+<div align="center">
 
 ```
-                    ┌─────────────────────────────────┐
-                    │      NiyahEngine (LOI v3)        │
-                    │  Arabic NLP · Intent Analysis    │
-                    │  Dialect Detection · Root Ext.   │
-                    └───────────────┬─────────────────┘
-                                    │
-                    ┌───────────────▼─────────────────┐
-                    │         ModelRouter              │
-                    │  Smart routing based on intent   │
-                    └─┬──────────────┬──────────────┬─┘
-                      │              │              │
-              ┌───────▼──────┐ ┌────▼────┐ ┌──────▼──────┐
-              │  🧠 Cognitive │ │⚡ Exec.  │ │  👁 Sensory  │
-              │  Understanding│ │  Code   │ │  Perception │
-              │  Reasoning    │ │  Action │ │  Creative   │
-              └──────────────┘ └─────────┘ └─────────────┘
-                                    │
-                    ┌───────────────▼─────────────────┐
-                    │        Ollama (Local)            │
-                    │  Qwen · LLaMA · DeepSeek · etc  │
-                    │  100% on-device inference        │
-                    └─────────────────────────────────┘
+██╗  ██╗ █████╗ ██╗   ██╗███████╗███╗   ██╗
+██║  ██║██╔══██╗██║   ██║██╔════╝████╗  ██║
+███████║███████║██║   ██║█████╗  ██╔██╗ ██║
+██╔══██║██╔══██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║
+██║  ██║██║  ██║ ╚████╔╝ ███████╗██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 ```
+
+### **Tauri Edition — Lightweight. Native. Sovereign.**
+### **الإصدار الخفيف — أصغر. أسرع. سيادي.**
+
+<br/>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Tauri](https://img.shields.io/badge/Tauri-v2-FFC131?logo=tauri&logoColor=white)](https://tauri.app)
+[![Rust](https://img.shields.io/badge/Rust-1.77+-000000?logo=rust&logoColor=white)](https://www.rust-lang.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Version](https://img.shields.io/badge/version-2.0.0-blueviolet)](package.json)
+[![Made in KSA](https://img.shields.io/badge/Made%20in-KSA%20🇸🇦-009900)](https://github.com/Grar00t)
+
+</div>
 
 ---
 
-## 🚀 Quick Start / البدء السريع
+## ⚡ Why Tauri? | لماذا Tauri؟
 
-### Prerequisites / المتطلبات
+> *Because a sovereign tool shouldn't weigh 200MB just to open a file.*
+> *لأن الأداة السيادية لا يجب أن تزن ٢٠٠ ميجابايت فقط لفتح ملف.*
 
-1. **Rust** (1.70+): `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-2. **Node.js** (20+): [nodejs.org](https://nodejs.org)
-3. **Tauri CLI v2**: `npm install -g @tauri-apps/cli@next`
-4. **Ollama**: [ollama.ai](https://ollama.ai) — Install and run locally
-5. **Pull a model**: `ollama pull qwen2.5-coder:7b`
+| Feature | Haven (Tauri) | Haven (Electron) |
+|---|:---:|:---:|
+| **Binary Size / حجم الملف** | ~8 MB | ~120 MB |
+| **RAM Idle / الذاكرة خاملاً** | ~30 MB | ~120 MB |
+| **Startup Time / وقت البدء** | < 1s | 3–5s |
+| **Backend / الخلفية** | Rust (native) | Node.js |
+| **IPC Speed / سرعة الاتصال** | Tauri Commands (native) | Electron IPC |
+| **WebView / عرض الواجهة** | OS WebView | Chromium (bundled) |
+| **Sovereignty Score** | ★★★★★ | ★★★☆☆ |
 
-### Development / التطوير
+---
+
+## 📸 Screenshot | لقطة الشاشة
+
+<div align="center">
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  HAVEN IDE  ·  Tauri Edition  ·  Sovereign AI Workspace  │
+├──────────────────────────────────────────────────────────┤
+│  [Sidebar] │         Code Editor             │ AI Panel  │
+│            │  fn main() {                    │           │
+│  📁 src/   │    println!("بسم الله");        │ 🧠 Niyah  │
+│  📁 src-   │  }                              │           │
+│    tauri/  │─────────────────────────────────│ Intent:   │
+│  📄 main   │  Terminal ─────────────────     │ Code Gen  │
+│  📄 lib    │  $ cargo tauri dev              │           │
+│            │  > Ready in 487ms               │ Model:    │
+│            │─────────────────────────────────│ Ollama    │
+│  Status: ■ Rust  ■ Ollama  ■ RTL  ■ NiyahGuard Active   │
+└──────────────────────────────────────────────────────────┘
+```
+
+*Screenshot placeholder — replace with actual app screenshot*
+
+</div>
+
+---
+
+## ✨ Features | المميزات
+
+### 🖥️ Core IDE
+
+- **Full Arabic RTL Support** — الواجهة الكاملة تدعم العربية من اليمين لليسار
+- **Code Editor** — محرر كود متكامل مع تمييز صيغي (syntax highlighting)
+- **Integrated Terminal** — طرفية مدمجة داخل البيئة
+- **Sidebar** — مستعرض ملفات ذكي مع تنقل سريع
+- **TopBar + StatusBar** — شريط أدوات علوي وسفلي، مع حالة المشروع اللحظية
+- **NotificationStack** — نظام إشعارات داخلي غير تدخلي
+- **Dark Sovereign Theme** — ثيم داكن سيادي مصمم للمطورين
+
+### 🧠 Sovereign AI Engine
+
+- **NiyahEngine** — محرك معالجة اللغة العربية الطبيعية
+  - Intent Detection / كشف النية
+  - Arabic Dialect Analysis / تحليل اللهجات
+  - Sentiment Analysis / تحليل المشاعر
+
+- **ThreeLobeAgent** — وكيل ذكاء اصطناعي ثلاثي الفصوص
+  - 🔵 **Cognitive Lobe** — الفص المعرفي (التحليل والتخطيط)
+  - 🟢 **Executive Lobe** — الفص التنفيذي (التنفيذ والكتابة)
+  - 🟡 **Sensory Lobe** — الفص الحسي (قراءة السياق والبيئة)
+
+- **IntentGraph** — رسم بياني للنوايا يفسر طلبات المطور
+- **ModelRouter** — توجيه ذكي للنماذج المحلية (Ollama والنماذج المحلية الأخرى)
+- **NiyahGuard** — منظف الجلسة السيادي — لا تسريب، لا تتبع
+
+### ⚙️ Rust Backend
+
+- **Tauri Commands** — واجهة أوامر Rust خلفية أسرع بكثير من Electron IPC
+- **Native Rust Bridge** — `lib.rs` + `main.rs` للتكامل مع نظام التشغيل
+- **Ollama Integration** — تشغيل نماذج AI محلياً بدون إنترنت
+- **Minimal Binary** — ملف تنفيذي صغير (~8 MB) بدلاً من ~120 MB
+
+---
+
+## 🚀 Quick Start | البدء السريع
+
+### Prerequisites | المتطلبات
 
 ```bash
-# Clone
-git clone https://github.com/khawrizm/haven-ide.git
-cd haven-ide
+# Rust (https://rustup.rs)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Install dependencies
+# Node.js 20+ (https://nodejs.org)
+node --version  # v20+
+
+# Tauri CLI
+cargo install tauri-cli
+
+# Ollama for local AI (https://ollama.com)
+ollama pull llama3
+```
+
+### Install & Run | التثبيت والتشغيل
+
+```bash
+# 1. Clone the repository / استنسخ المستودع
+git clone https://github.com/Grar00t/haven-tauri.git
+cd haven-tauri
+
+# 2. Install dependencies / ثبّت المكتبات
 npm install
 
-# Run in dev mode (hot reload)
-npm run tauri:dev
+# 3. Start development mode / شغّل بيئة التطوير
+npm run tauri dev
+
+# 4. Build for production / ابنِ للإنتاج
+npm run tauri build
 ```
 
-### Production Build / البناء للإنتاج
+> **Output:** A native binary ~8 MB — not a 120 MB Electron blob.
+> **المخرج:** ملف تنفيذي أصيل ~٨ ميجابايت — وليس ٠ ١٢ ميجابايت كـ Electron.
 
-```bash
-# Build for your platform
-npm run tauri:build
+---
 
-# Output:
-# Linux:   src-tauri/target/release/bundle/deb/
-# macOS:   src-tauri/target/release/bundle/dmg/
-# Windows: src-tauri/target/release/bundle/msi/
+## 🏗️ Architecture | البنية المعمارية
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      HAVEN — Tauri v2                       │
+│                                                             │
+│   ┌──────────────────────────────────────────────────┐      │
+│   │              React 19 (WebView / UI)             │      │
+│   │                                                  │      │
+│   │  AIPanel  │  CodeEditor  │  Sidebar  │  TopBar   │      │
+│   │  Terminal │  StatusBar   │  NotificationStack    │      │
+│   │  IntentGraph             │  NiyahEngine (JS)     │      │
+│   └────────────────────┬─────────────────────────────┘      │
+│                        │  Tauri Commands (IPC Bridge)       │
+│                        │  ↕  native, zero-copy              │
+│   ┌────────────────────▼─────────────────────────────┐      │
+│   │              Rust Backend (src-tauri/)           │      │
+│   │                                                  │      │
+│   │  main.rs ──► lib.rs ──► ModelRouter              │      │
+│   │              │           └──► Ollama (local AI)  │      │
+│   │              └──► NiyahGuard (session cleaner)   │      │
+│   │              └──► ThreeLobeAgent                 │      │
+│   │                    ├── Cognitive Lobe            │      │
+│   │                    ├── Executive Lobe            │      │
+│   │                    └── Sensory Lobe              │      │
+│   └──────────────────────────────────────────────────┘      │
+│                        │                                     │
+│   ┌────────────────────▼─────────────────────────────┐      │
+│   │         OS / Native Layer (no Chromium!)         │      │
+│   │  Linux WebKit  │  macOS WebKit  │  Windows WebView2 │   │
+│   └──────────────────────────────────────────────────┘      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Component Map | خريطة المكونات
+
+```
+src/
+├── components/
+│   ├── AIPanel/          # لوحة الذكاء الاصطناعي
+│   ├── CodeEditor/       # محرر الكود
+│   ├── IntentGraph/      # رسم بياني للنوايا
+│   ├── NotificationStack/# نظام الإشعارات
+│   ├── Sidebar/          # الشريط الجانبي
+│   ├── StatusBar/        # شريط الحالة
+│   ├── Terminal/         # الطرفية المدمجة
+│   └── TopBar/           # شريط الأدوات العلوي
+src-tauri/
+├── src/
+│   ├── main.rs           # نقطة الدخول — Tauri bootstrap
+│   └── lib.rs            # منطق الأوامر والـ AI routing
 ```
 
 ---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack | المكدس التقني
+
+<div align="center">
 
 | Layer | Technology |
-|-------|-----------|
-| **Desktop** | Tauri v2 (Rust) |
-| **Frontend** | React 19 + TypeScript |
-| **Build** | Vite 6 |
-| **Styling** | Tailwind CSS v4 |
-| **State** | Zustand 5 |
-| **Editor** | Monaco Editor |
-| **Terminal** | xterm.js |
-| **AI Backend** | Ollama (local) |
-| **NLP** | NiyahEngine (custom Arabic NLP) |
+|---|---|
+| **Desktop Runtime** | [Tauri v2](https://tauri.app) |
+| **Backend** | [Rust](https://rust-lang.org) |
+| **Frontend** | [React 19](https://react.dev) + [TypeScript 5](https://typescriptlang.org) |
+| **Build Tool** | [Vite 5](https://vitejs.dev) |
+| **Local AI** | [Ollama](https://ollama.com) |
+| **NLP Engine** | NiyahEngine (Custom Arabic NLP) |
+| **AI Agent** | ThreeLobeAgent (Cognitive / Executive / Sensory) |
+| **Session Guard** | NiyahGuard |
+| **Styling** | CSS + Dark Sovereign Theme |
+
+</div>
 
 ---
 
-## 🧠 Core Engines
+## 🌍 Philosophy | الفلسفة
 
-### NiyahEngine (LOI v3)
-Arabic-first NLP engine. Processes intention, not text.
-- **2,976 Arabic word forms** across 283 roots
-- **7 dialects**: Saudi, Khaleeji, Egyptian, Levantine, Maghrebi, MSA, Mixed
-- **LRU Cache**: 512 entries for fast intent lookup
-- **Intent Graph**: 200-session lookback for context tracking
-- **Sovereignty alignment**: Detects and flags cloud/telemetry intent
+<div dir="rtl" align="right">
 
-### ModelRouter
-Three-lobe intelligence routing:
-- **Cognitive Lobe**: Understanding, reasoning, education
-- **Executive Lobe**: Code generation, infrastructure
-- **Sensory Lobe**: Creative, content, security perception
-- **20+ model families**: Qwen, LLaMA, DeepSeek, Gemma, Mistral, Phi, etc.
-- **Smart scoring**: Picks best model per task and dialect
+### الإنسان أولاً
 
-### OllamaService
-Full Ollama integration:
-- Connection management with health checks
-- Streaming (SSE-based) chat and generation
-- Code completion (fill-in-middle)
-- Model management (list, pull, delete, show)
-- Abort controller support
+HAVEN لم يُبنَ ليكون مجرد أداة تطوير.
+بُني ليكون **موقفاً**.
 
-### SovereignSessionCleaner
-AES-256-GCM encrypted session management:
-- All sessions encrypted at rest
-- Device-unique key derivation (PBKDF2)
-- Auto-purge of sessions older than 7 days
-- Sovereign wipe: complete data erasure
+في عالم تستخرج فيه شركات التقنية الكبرى بياناتك، وتُقيّد أدواتك، وتُؤجّر لك سيادتك بالاشتراك الشهري —  
+HAVEN يقول: **لا**.
+
+**الذكاء الاصطناعي يعمل محلياً.**  
+**الكود يبقى عندك.**  
+**لا سحابة. لا تتبع. لا إذن مطلوب.**
+
+ولأن المطور العربي يستحق بيئة تحترم لغته وثقافته —  
+فإن HAVEN يتكلم العربية من اليمين لليسار،  
+ويفهم النية قبل الكلمة،  
+ويعرف أن الكود يُكتب بالقلب قبل اليدين.
+
+</div>
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+### Human First
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+B` | Toggle File Explorer |
-| `Ctrl+Shift+A` | Toggle AI Panel |
-| `Ctrl+Shift+J` | Toggle Terminal |
-| `Ctrl+Shift+I` | Toggle Intent Graph |
-| `Ctrl+S` | Save File |
+HAVEN wasn't built to be just a developer tool.
+It was built to be a **statement**.
 
----
+In a world where Big Tech extracts your data, locks down your tools, and rents you your own sovereignty by monthly subscription — HAVEN says: **No.**
 
-## 🌍 Languages / اللغات
+**AI runs locally.**  
+**Your code stays with you.**  
+**No cloud. No tracking. No permission required.**
 
-HAVEN IDE supports 10 languages:
-
-| Code | Language | اللغة |
-|------|----------|-------|
-| `ar` | Arabic (default) | العربية |
-| `en` | English | الإنجليزية |
-| `fr` | French | الفرنسية |
-| `es` | Spanish | الإسبانية |
-| `ja` | Japanese | اليابانية |
-| `de` | German | الألمانية |
-| `zh` | Chinese | الصينية |
-| `ko` | Korean | الكورية |
-| `tr` | Turkish | التركية |
-| `hi` | Hindi | الهندية |
+The Arabic-speaking developer deserves an environment that respects their language and culture — an IDE that speaks Arabic right-to-left, understands intent before words, and knows that code is written with the heart before the hands.
 
 ---
 
-## 🎨 Design System
+## 🔗 Related Projects | المشاريع ذات الصلة
 
-### Colors / الألوان
-
-```css
---haven-base:    #0a0a0a  /* Deep black background */
---haven-gold:    #d4af37  /* Sovereignty gold accent */
---haven-green:   #00ff41  /* Terminal green — life */
-```
-
-### Theme: Haven Dark
-- **Background**: Deep black `#0a0a0a` — sovereign silence
-- **Gold**: `#d4af37` — the color of heritage and knowledge
-- **Green**: `#00ff41` — terminal green, alive and local
+| Project | Description |
+|---|---|
+| [haven403/Haven](https://github.com/haven403/Haven) | The original HAVEN — foundational architecture / البنية الأصلية |
+| [Grar00t/haven-electron](https://github.com/Grar00t/haven-electron) | Haven Electron Edition — cross-platform / إصدار Electron |
+| [haven403/sovereign-stack](https://github.com/haven403/sovereign-stack) | Sovereign infrastructure stack / البنية التحتية السيادية |
+| [haven403/KhawrizmOS](https://github.com/haven403/KhawrizmOS) | KhawrizmOS — Sovereign Arabic OS / نظام التشغيل السيادي |
 
 ---
 
-## 🔐 Privacy & Sovereignty / الخصوصية والسيادة
+## 👤 Credits | الفريق
+
+<div align="center">
+
+**Built by / بناه**
+
+**Sulaiman Alshammari — سليمان الشمري**
+
+*أبو خوارزم · [@Grar00t](https://github.com/Grar00t)*
+
+Riyadh, Kingdom of Saudi Arabia 🇸🇦 · 2026
+
+> *"أبنيها لأن العالم الرقمي السيادي يبدأ من سطر كود."*
+> *"I build it because the sovereign digital world begins with one line of code."*
+
+</div>
+
+---
+
+## 📄 License | الرخصة
 
 ```
-✓ Zero telemetry — no data sent anywhere
-✓ Zero cloud — all inference runs on your GPU/CPU
-✓ Zero Microsoft — no VSCode APIs, no Azure, no Teams
-✓ Zero tracking — no analytics, no error reporting to external
-✓ AES-256-GCM — session data encrypted on device
-✓ SovereignBridge — blocked patterns for data exfiltration
-✓ Open source — audit every line
+MIT License
+
+Copyright (c) 2026 Sulaiman Alshammari (@Grar00t)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ```
 
 ---
 
-## 🦀 Tauri Commands (Rust)
-
-| Command | Description |
-|---------|-------------|
-| `ollama_health_check` | Ping Ollama server |
-| `ollama_generate` | Non-streaming generation |
-| `ollama_chat` | Non-streaming chat |
-| `ollama_list_models` | List available models |
-| `ollama_running_models` | Get running model list |
-| `ollama_show_model` | Get model details |
-| `ollama_delete_model` | Remove a model |
-| `read_file` | Read file content |
-| `write_file` | Write file content |
-| `create_directory` | Create directory |
-| `delete_path` | Delete file/directory |
-| `list_directory` | List directory contents |
-| `run_command` | Execute shell command |
-| `get_system_info` | CPU, RAM, disk usage |
-| `get_home_dir` | Get home directory path |
-| `get_app_data_dir` | Get app data directory |
-
----
-
-## 📂 Project Structure
+<div align="center">
 
 ```
-haven-tauri/
-├── src/                          # Frontend (React)
-│   ├── engine/
-│   │   ├── NiyahEngine.ts        # Arabic NLP engine
-│   │   ├── OllamaService.ts      # Ollama integration
-│   │   ├── ModelRouter.ts        # Three-lobe routing
-│   │   ├── ThreeLobeAgent.ts     # Cognitive orchestrator
-│   │   ├── SovereignSessionCleaner.ts  # Encrypted sessions
-│   │   └── SovereignBridge.ts    # Process sandboxing
-│   ├── components/
-│   │   ├── TopBar.tsx            # Window controls + branding
-│   │   ├── Sidebar.tsx           # File explorer
-│   │   ├── CodeEditor.tsx        # Monaco editor
-│   │   ├── AIPanel.tsx           # Chat interface
-│   │   ├── Terminal.tsx          # xterm.js terminal
-│   │   ├── IntentGraph.tsx       # Canvas intent visualization
-│   │   ├── StatusBar.tsx         # Bottom status bar
-│   │   └── NotificationStack.tsx # Toast notifications
-│   ├── i18n/index.ts             # 10-language system
-│   ├── store/index.ts            # Zustand state
-│   ├── styles/globals.css        # Haven dark theme
-│   ├── App.tsx                   # Main layout
-│   └── main.tsx                  # React entry point
-├── src-tauri/                    # Tauri backend (Rust)
-│   ├── src/
-│   │   ├── main.rs               # Entry point
-│   │   └── lib.rs                # All Tauri commands
-│   ├── Cargo.toml                # Rust dependencies
-│   ├── tauri.conf.json           # App configuration
-│   └── build.rs                  # Build script
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-├── tailwind.config.ts
-└── README.md
+الخوارزمية دائماً تعود للوطن
+The Algorithm Always Returns Home
 ```
 
----
+*HAVEN IDE · Tauri Edition · v2.0.0*
+*Built with Rust 🦀 + React ⚛️ + Sovereignty 🇸🇦*
 
-## 📦 Recommended Ollama Models
-
-```bash
-# Code (Executive Lobe)
-ollama pull qwen2.5-coder:7b
-ollama pull deepseek-coder-v2:16b
-
-# Chat/Analysis (Cognitive Lobe)
-ollama pull qwen2.5:14b
-ollama pull llama3.3:latest
-
-# Creative/Sensory (Sensory Lobe)
-ollama pull llama3.2:latest
-ollama pull gemma2:9b
-
-# Arabic support
-ollama pull qwen2.5:7b  # Best Arabic support
-```
-
----
-
-## 🤝 Contributing
-
-Built for the Arabic developer community. Contributions in Arabic welcome.
-
-```bash
-git checkout -b feature/your-feature
-git commit -m "feat: وصف الميزة بالعربية"
-git push origin feature/your-feature
-```
-
----
-
-## 📄 License
-
-MIT © 2026 Sulaiman Alshammari — Ghala Rafaa Al-Omari Co.
-
----
-
-> **بُني HAVEN IDE إيماناً بأن البرمجي العربي يستحق أدوات سيادية تحترم خصوصيته وتتكلم لغته.**
->
-> *HAVEN IDE was built in the belief that Arab developers deserve sovereign tools that respect their privacy and speak their language.*
+</div>
